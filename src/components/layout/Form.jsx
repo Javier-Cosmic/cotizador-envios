@@ -1,13 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Context from '../context/Context';
 import Error from './Error';
 import { calculateZone, calculateKg, validate } from '../context/helper';
-import { useEffect } from 'react';
 
 const Form = () => {
     const GlobalContext = useContext(Context);
     const { saveDataUser, setError, error } = GlobalContext;
-    console.log('renderizando form')
 
     const [paquete, setPaquete] = useState({
         type: '',
@@ -25,42 +23,39 @@ const Form = () => {
     const [validationHeight, setValidationHeight] = useState(false);
     const [validationLong, setValidationLong] = useState(false);
     const [validationWeight, setValidationWeight] = useState(false);
-
+    const [validation, setValidation] = useState(false);
 
     useEffect(() => {
 
-        if (parseInt(width) > 100) {
+        if (width > 100) {
             setValidationWidth(true)
         }else{
             setValidationWidth(false)
         } 
-        
-        // if(height > 30){
-        //     setValidationHeight(true)
-        // }else if(long > 80){
-        //     setValidationLong(true)
-        // }else if(weight > 5){
-        //     setValidationWeight(true)
-        // }else{
-        //     setValidationWidth(false);
-        //     setValidationHeight(false);
-        //     setValidationLong(false);
-        //     setValidationWeight(false);
-        // }
-        // setValidationWidth(validate(width, height, long, weight));
-        // console.log(validate(width, height, long, weight))
+        if(height > 30){
+            setValidationHeight(true)
+        }else{
+            setValidationHeight(false)
+        } 
+        if(long > 80){
+            setValidationLong(true)
+        }else{
+            setValidationLong(false)            
+        } 
+        if(weight > 5){
+            setValidationWeight(true)
+        }else{
+            setValidationWeight(false);
+        }
+    }, [width, height, long, weight, type])
 
-    }, [validationWidth, validationHeight, validationLong, validationWeight])
 
     const onChange = (e) => {
         setPaquete({
             ...paquete,
             [e.target.name]: e.target.value,
-        });
-
-        
+        }); 
     };
-
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -72,7 +67,7 @@ const Form = () => {
 
         shipping = calculateKg(parseFloat(weight)) + shippingsobre;
 
-        if (type.trim() === '' || from.trim() === '' || from === 'Seleccionar',
+        if (from.trim() === '' || from === 'Seleccionar',
             to.trim() === '' || to === 'Seleccionar'
         ) {
             setError(true);
@@ -87,22 +82,41 @@ const Form = () => {
                 to: to,
                 value: shippingsobre,
             };
-            // setError(false);
+            // saveDataUser(obj);
             console.log(obj);
         } else if ( type === 'paquete') {
+            
+            if(width === '' || height === '' || long === '' || weight === ''){
+                setError(true);
+                return;
+            }
+            setError(false);
+            
+            if(width > 100 || height > 30 || long > 80 || weight > 5){
+                setValidation(true);
+                return;
+            }
+            setValidation(false);
+
             const obj = {
                 data: paquete,
                 value: shipping,
             };
-            // setError(false);
+            // saveDataUser(obj);
             console.log(obj);
+
+        }else if (type === '') {
+            setError(true);
+            return;
+        }else{
+            setError(false);
         }
-        // saveDataUser(obj);
     };
 
     return (
         <form onSubmit={onSubmit} className='form'>
             {error ? <Error>Rellena todos los campos</Error> : null}
+            {validation ? <Error>Datos erroneos</Error> : null}
             <h3 className='title-form-center'>¿Que quieres enviar?</h3>
             <div className='form-fields'>
                 <label className='label-fields'>Tipo de encomienda: </label>

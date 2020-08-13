@@ -168,7 +168,7 @@ body {
     font-size: 16px;
   }
 
-  .input-text {
+  .input-text, .input-error {
     font-size: 16px;
     height: 2rem;
   }
