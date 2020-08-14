@@ -1,12 +1,12 @@
 import React, {useReducer} from 'react';
 import Context from './Context';
 import Reducer from './Reducer';
-import {SAVE_DATA_USER, ERROR} from './types';
+import {SAVE_DATA_USER, ERROR, LOADING, BACK} from './types';
 
 const GlobalState = ({ children }) => {
 
     const initialState = {
-        data: [],
+        shippingData: [],
         error: null,
         loading: false
     }
@@ -27,10 +27,27 @@ const GlobalState = ({ children }) => {
         })
     }
 
+    const loadingSpinner = (boolean) => {
+        dispatch({
+            type: LOADING,
+            payload: boolean
+        })
+    }
+
+    const backHome = () => {
+        dispatch({
+            type: BACK
+        })
+    }
+
     const values = {
+        shippingdata: state.shippingData,
         error: state.error,
+        loading: state.loading,
         saveDataUser,
-        setError
+        setError,
+        loadingSpinner,
+        backHome
     }
 
     return(

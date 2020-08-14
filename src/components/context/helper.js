@@ -1,4 +1,22 @@
 
+export const calculateKg = (kg) => {
+    let increment;
+
+    if (kg <= 1) {
+        return increment = 500
+    }else if(kg <= 2){
+        return increment = 1000
+    }else if(kg <= 3){
+        return increment = 1500
+    }else if(kg <= 4){
+        return increment = 2500
+    }else if(kg <= 5){
+        return increment = 3000
+    }
+
+    return increment;
+}
+
 export const calculateZone = (from, zone) => {
     let value;
 
@@ -124,56 +142,3 @@ export const calculateZone = (from, zone) => {
     }
         
 }
-
-export const calculateKg = (kg) => {
-    let increment;
-
-    if (kg <= 1) {
-        return increment = 500
-    }else if(kg <= 2){
-        return increment = 1000
-    }else if(kg <= 3){
-        return increment = 1500
-    }else if(kg <= 4){
-        return increment = 2500
-    }else if(kg <= 5){
-        return increment = 3000
-    }
-
-    return increment;
-
-}
-
-export const validate = (width, height, long, weight) => {
-
-    let obj;
-
-    if (width > 100) {
-        return obj = {
-            width: true
-        }
-    }
-    if(height > 30){
-        return obj = {
-            height: true
-        }
-    }
-    if(long > 80){
-        return obj = {
-            long: true
-        }
-    }
-    if(weight > 5){
-        return obj = {
-            weight: true
-        }
-    }
-        return obj = {        
-            width: false,
-            height: false,
-            long: false,
-            weight: false
-        }
-}
-
-
