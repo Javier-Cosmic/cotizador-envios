@@ -12,9 +12,21 @@ header {
   font-size: 4vh;
 }
 
+.logo {
+  z-index: 100;
+  width: 3rem;
+  height: 2rem;
+  margin-right: 0.1rem;
+}
+
 @media (max-width: 350px) {
   .title {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
+  }
+
+  .logo {
+    margin-left: -4px;
+    margin-right: -1px;
   }
 }
 * {
@@ -27,6 +39,12 @@ header {
 
 body {
   background-color: #56556e;
+  background-image: url("../img/refrigerator-truck.svg");
+  background-size: 157px;
+  background-position: -25px 30px;
+  background-attachment: fixed;
+  background-origin: padding-box;
+  min-height: 100vh;
   color: white;
   font-size: 16px;
   font-family: "Red Hat Display", sans-serif;
@@ -42,9 +60,9 @@ body {
   padding: 1.5em;
   width: 30vw;
   border-radius: 5px;
-  -webkit-box-shadow: 0px 6px 27px -5px rgba(0, 0, 0, 0.7);
-  -moz-box-shadow: 0px 6px 27px -5px rgba(0, 0, 0, 0.7);
-  box-shadow: 0px 6px 27px -5px rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow: 0px 6px 27px -5px rgba(0, 0, 0, 0.8);
+  -moz-box-shadow: 0px 6px 27px -5px rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 6px 27px -5px rgba(0, 0, 0, 0.8);
 }
 
 .form-fields {
@@ -130,25 +148,6 @@ body {
   color: #ffd571;
 }
 
-.button {
-  background: #bbd196;
-  color: black;
-  width: 100%;
-  padding: 0.5rem;
-  outline: none;
-  border-style: none;
-  margin-top: 2.5rem;
-  border-radius: 5px;
-  transition: 0.5s;
-  font-size: 15px;
-  font-weight: 500;
-}
-.button:hover {
-  cursor: pointer;
-  transform: scale(1.05, 1.05);
-  background: #bae471;
-}
-
 @media (max-width: 1250px) {
   .box {
     width: 40%;
@@ -227,6 +226,155 @@ body {
     opacity: 1;
     top: 0;
   }
+}
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 3px double #56556e;
+  border-top: 3px solid #ffd571;
+  border-right: 3px solid #ffd571;
+  border-radius: 50%;
+  animation: 0.8s spinner infinite reverse ease-in-out;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(60deg);
+  }
+  from {
+    transform: rotate(420deg);
+  }
+}
+.value-shipping {
+  text-align: center;
+  width: 100%;
+  background: #56556e;
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+.value-total {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.box-paquete {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0.8rem;
+  margin-bottom: 0.8rem;
+}
+.box-paquete span {
+  color: #ffd571;
+  font-weight: 600;
+  margin: 0.3rem 0;
+}
+.box-paquete p {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.box-sobre {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0.8rem;
+  margin-top: 1rem;
+  margin-bottom: -0.5rem;
+}
+.box-sobre span {
+  color: #ffd571;
+  font-weight: 600;
+  margin: 0.3rem 0;
+}
+.box-sobre p {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.title-medida {
+  text-transform: uppercase;
+  margin: 0rem 0 0.4rem 0;
+}
+
+.title-medidas {
+  text-transform: uppercase;
+  margin: 1.6rem 0 0.4rem 0;
+}
+
+.container-table {
+  width: 100%;
+  overflow: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table thead {
+  background: #ffd571;
+}
+.table thead tr {
+  text-align: left;
+}
+.table thead th {
+  color: #3c2946;
+}
+.table th,
+.table td {
+  padding: 0.2rem 0.6rem;
+}
+.table tbody {
+  background: #56556e;
+}
+
+@media (max-width: 376px) {
+  .table {
+    width: 70%;
+  }
+}
+.button {
+  background: #bbd196;
+  color: black;
+  width: 100%;
+  padding: 0.5rem;
+  outline: none;
+  border-style: none;
+  margin-top: 2.5rem;
+  border-radius: 5px;
+  transition: 0.5s;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: "Red Hat Display", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button:hover {
+  cursor: pointer;
+  transform: scale(1.05, 1.05);
+  background: #bae471;
+}
+
+.logo-button {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-right: 0.3rem;
+}
+
+.logo-back {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.3rem;
+  margin-bottom: 2px;
 }
 
 /*# sourceMappingURL=styles.css.map */

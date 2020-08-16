@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import Form from './Form';
+import ShowData from './ShowData';
 import Spinner from './Spinner';
 import Context from '../context/Context';
-import ShowData from './ShowData';
 
 const Home = () => {
     const GlobalContext = useContext(Context);

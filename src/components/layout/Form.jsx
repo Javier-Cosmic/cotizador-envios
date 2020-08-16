@@ -3,6 +3,7 @@ import Context from '../context/Context';
 import Error from './Error';
 import { calculateZone, calculateKg } from '../context/helper';
 import { useValidationFields } from '../hooks/useValidation';
+import caja from '../../assets/img/caja.svg';
 
 const Form = () => {
     const GlobalContext = useContext(Context);
@@ -54,6 +55,8 @@ const Form = () => {
         }
         setError(false);
 
+        const count = Math.round(Math.random()*(5000 - 2000) + 1000);
+
         if (type === 'sobre') {
             loadingSpinner(true);
 
@@ -70,7 +73,7 @@ const Form = () => {
                 };
                 saveDataUser(obj);
 
-            }, 1000);
+            }, count);
             
         } else if (type === 'paquete') {
             if (width === '' || height === '' || long === '' || weight === '') {
@@ -79,7 +82,7 @@ const Form = () => {
             }
             setError(false);
 
-            if (width > 100 || height > 30 || long > 80 || weight > 5) {
+            if (width > 150 || height > 50 || long > 100 || weight > 8) {
                 setValidation(true);
                 return;
             }
@@ -96,7 +99,7 @@ const Form = () => {
 
               saveDataUser(obj);
                 
-            }, 1000);
+            }, count);
 
         } else if (type === '') {
             setError(true);
@@ -175,7 +178,7 @@ const Form = () => {
                         value={width}
                         onChange={onChange}
                         disabled={type === 'sobre' || type === ''}
-                        placeholder='max 100 cm'
+                        placeholder='max 150 cm'
                         className={
                             validationWidth ? 'input-error' : 'input-text'
                         }
@@ -189,7 +192,7 @@ const Form = () => {
                         value={height}
                         onChange={onChange}
                         disabled={type === 'sobre' || type === ''}
-                        placeholder='max 30 cm'
+                        placeholder='max 50 cm'
                         className={
                             validationHeight ? 'input-error' : 'input-text'
                         }
@@ -203,7 +206,7 @@ const Form = () => {
                         value={long}
                         onChange={onChange}
                         disabled={type === 'sobre' || type === ''}
-                        placeholder='max 80 cm'
+                        placeholder='max 100 cm'
                         className={
                             validationLong ? 'input-error' : 'input-text'
                         }
@@ -216,11 +219,11 @@ const Form = () => {
                     value={weight}
                     onChange={onChange}
                     disabled={type === 'sobre' || type === ''}
-                    placeholder='max 5 kilogramos'
+                    placeholder='max 8 kilogramos'
                     className={validationWeight ? 'input-error' : 'input-text'}
                 />
                 <button type='submit' className='button'>
-                    Cotizar
+                   <img src={caja} alt='logo button' className='logo-button'/> Cotizar 
                 </button>
             </div>
         </form>

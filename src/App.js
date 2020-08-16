@@ -6,10 +6,10 @@ import Home from './components/layout/Home';
 
 function App() {
   return (
-    <GlobalState>
-      <Header />
-      <Home />
-    </GlobalState>
+      <GlobalState>
+        <Header />
+        <Home />
+      </GlobalState>
   );
 }
 

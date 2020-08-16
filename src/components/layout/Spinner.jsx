@@ -1,7 +1,9 @@
 import React from 'react';
 
 const Spinner = () => (
-    <h1>Cargando...</h1>
+    <div className='loading'>
+        <p className='spinner'></p>
+    </div>
 )
 
 export default Spinner;

@@ -12,9 +12,22 @@ export const calculateKg = (kg) => {
         return increment = 2500
     }else if(kg <= 5){
         return increment = 3000
+    }else if(kg <= 6){
+        return increment = 3500
+    }else if(kg <= 7){
+        return increment = 4000
+    }else if(kg <= 8){
+        return increment = 4500
     }
 
     return increment;
+}
+
+export const formatZone = (zone) => {
+
+    let cadena = zone.split("-").join("  ");
+    return cadena.charAt(0).toUpperCase() + cadena.slice(1);
+    
 }
 
 export const calculateZone = (from, zone) => {

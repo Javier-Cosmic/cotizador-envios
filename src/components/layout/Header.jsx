@@ -1,8 +1,9 @@
 import React from 'react';
+import Logo from '../../assets/img/entrega.svg';
 
 const Header = () => (
     <header>
-        <h1 className='title'>Cotizador de envios</h1>
+        <img src={Logo} alt='logo' className='logo'/> <h1 className='title'>Cotizador de envios</h1>
     </header>
 );
 

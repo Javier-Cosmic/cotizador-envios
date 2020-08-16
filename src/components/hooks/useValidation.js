@@ -8,22 +8,22 @@ export const useValidationFields = (width, height, long, weight) => {
 
     useEffect(() => {
 
-        if (width > 100) {
+        if (width > 150) {
             setValidationWidth(true)
         }else{
             setValidationWidth(false)
         } 
-        if(height > 30){
+        if(height > 50){
             setValidationHeight(true)
         }else{
             setValidationHeight(false)
         } 
-        if(long > 80){
+        if(long > 100){
             setValidationLong(true)
         }else{
             setValidationLong(false)            
         } 
-        if(weight > 5){
+        if(weight > 8){
             setValidationWeight(true)
         }else{
             setValidationWeight(false);
